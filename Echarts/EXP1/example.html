@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!--引入ECharts脚本-->
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.js"></script>
+</head>
+
+<body>
+    <!---为ECharts准备一个具备大小（宽高）的DOM-->
+    <div id="main" style="width: 600px; height: 400px"></div>
+    <script type="text/javascript">
+        //基于准备好的DOM，初始化ECharts图表
+        var myChart = echarts.init(document.getElementById("main"));
+        //指定图表的配置项和数据
+        var option = {
+            backgroundColor: '#2c343c',
+            title: {  //配置标题组件，包含主标题和副标题
+                text: '这是主标题',
+                textStyle: {  //设置主标题样式
+                    color: '#fff'
+                },
+                subtext: '这是副标题',  //设置副标题样式
+                subtextStyle: {
+                    color: '#bbb'
+                },
+                padding: [10, 0, 100, 100]  //设置标题位置，用padding属性来定位
+            },
+            legend: {  //配置图例组件
+                type: 'plain',  //设置图例类型，默认为'plain'，当图例很多时可使用'scroll'
+                top: '1%',  //设置图例相对容器位置，top\bottom\left\right
+                selected: {
+                    '销量': true,  //设置图例是否显示，默认为true
+                },
+                textStyle: {  //设置图例内容样式
+                    color: '#fff',  //设置所有图例的字体颜色
+                    //backgroundColor: 'black',  //设置所有图例的字体背景色
+                },
+                tooltip: {  //设置图例提示框,默认不显示
+                    show: true,
+                    color: 'red',
+                },
+                data: [  //设置图例内容
+                    {
+                        name: '销量',
+                        icon: 'circle',  //设置图例的外框样式
+                        textStyle: {
+                            color: '#fff',  //单独设置某一个图例的颜色
+                            //backgroundColor: 'black',  //单独设置某一个图例的字体背景色
+                        }
+                    }
+                ],
+            },
+            tooltip: {  //配置提示框组件
+                show: true,  //设置是否显示提示框，默认为true
+                trigger: 'item',  //设置数据项图形触发
+                axisPointer: {  //设置指示样式
+                    type: 'shadow',
+                    axis: 'auto',
+                },
+                padding: 5,
+                textStyle: {  //设置提示框内容样式
+                    color: "#fff",
+                },
+            },
+            grid: {  //配置grid区域
+                show: false,  //设置是否显示直角坐标系网格
+                top: 80,  //设置相对位置，top\bottom\left\right
+                containLabel: false,  //设置grid区域是否包含坐标轴的刻度标签
+                tooltip: {  //鼠标焦点放在图形上，产生的提示框
+                    show: true,
+                    trigger: 'item',  //设置触发类型
+                    textStyle: {
+                        color: '#fff666',  //设置提示框文字的颜色
+                    }
+                }
+            },
+            xAxis: {  //配置x轴坐标系
+                show: true,  //设置x轴坐标系是否显示
+                position: 'bottom',  //设置x轴位置
+                offset: 0,  //设置x轴相对于默认位置的偏移
+                type: 'category',  //设置轴类型，默认'category'
+                name: '月份',  //设置轴名称
+                nameLocation: 'end',  //设置轴名称相对位置
+                nameTextStyle: {  //设置坐标轴名称样式
+                    color: "#fff",
+                    padding: [5, 0, 0, -5],
+                },  //设置坐标轴名称相对位置
+                nameGap: 15,  //设置坐标轴名称与轴线之间的距离
+                //nameRotate:270,  //设置坐标轴名字旋转
+                axisLine: {  //设置坐标轴轴线
+                    show: true,  //设置坐标轴轴线是否显示
+                    symbol: ['none', 'arrow'],  //设置是否显示轴线箭头
+                    symbolSize: [8, 8],  //设置箭头大小
+                    symbolOffset: [0, 7],  //设置箭头位置
+                    lineStyle: {  //设置线
+                        color: '#fff',  //设置坐标轴轴线的颜色
+                        width: 1,  //设置坐标轴轴线的线宽
+                        type: 'solid',  //设置坐标轴轴线的线型
+                    },
+                },
+                axisTick: {  //设置坐标轴刻度
+                    show: true,  //设置坐标轴刻度是否显示
+                    inside: true,  //设置坐标轴刻度是否朝内
+                    lengt: 3,  //设置长度
+                    lineStyle: {
+                        color: 'yellow',  //设置坐标轴刻度的颜色，默认取轴线的颜色
+                        width: 1,  //设置坐标轴刻度的线宽
+                        type: 'solid',  //设置坐标轴刻度的线型
+                    },
+                },
+                axisLabel: {  //设置坐标轴标签
+                    show: true,  //设置坐标轴标签是否显示
+                    inside: false,  //设置坐标轴标签是否朝内
+                    rotate: 0,  //设置旋转角度
+                    margin: 5,
+                },  //设置刻度标签与轴线之间的距离
+                //color:'red', },  //设置默认取轴线的颜色
+                splitLine: {  //设置grid区域中的分隔线
+                    show: false,  //设置grid区域中的分隔线是否显示
+                    lineStyle: {
+                        color: 'red',
+                        //width:1,
+                        //type:'solid',
+                    },
+                },
+                splitArea: {  //设置网格区域
+                    show: false,
+                },  //设置网格区域是否显示，默认false
+                data: ["1月", "2月", "3月", "4月", "5月", "6月", "7月",
+                    "8月", "9月", "10月", "11月", "12月"]
+            },
+            yAxis: {  //配置y轴坐标系
+                show: true,  //设置网格区域是否显示
+                position: 'left',  //设置y轴位置
+                offset: 0,  //设置y轴相对于默认位置的偏移
+                type: 'value',  //设置轴类型，默认'category'
+                name: '销量',  //设置轴名称
+                nameLocation: 'end',  //设置轴名称相对位置value
+                nameTextStyle: {  //设置坐标轴名称样式
+                    color: "#fff",
+                    padding: [5, 0, 0, 5],
+                },  //设置坐标轴名称相对位置
+                nameGap: 15,  //设置坐标轴名称与轴线之间的距离
+                nameRotate: 0,  //设置坐标轴名字旋转
+                axisLine: {  //设置坐标轴轴线
+                    show: true,  //设置坐标轴轴线是否显示
+                    //-------------------箭头-------------------------
+                    symbol: ['none', 'arrow'],  //设置是否显示轴线箭头
+                    symbolSize: [8, 8],  //设置箭头大小
+                    symbolOffset: [0, 7],  //设置箭头位置
+                    lineStyle: {  //设置线
+                        color: '#fff',
+                        width: 1,
+                        type: 'solid',
+                    },
+                },
+                axisTick: {  //设置坐标轴刻度
+                    show: true,  //设置坐标轴刻度是否显示
+                    inside: true,  //设置坐标轴刻度是否朝内
+                    length: 3,  //设置长度
+                    lineStyle: {
+                        //color:'red',  //设置默认取轴线的颜色
+                        width: 1,
+                        type: 'solid',
+                    },
+                },
+                axisLabel: {  //设置坐标轴标签
+                    show: true,  //设置坐标轴标签是否显示
+                    inside: false,  //设置坐标轴标签是否朝内
+                    rotate: 0,  //设置旋转角度
+                    margin: 8,  //设置刻度标签与轴线之间的距离
+                    //color:'red',  //设置默认取轴线的颜色
+                },
+                splitLine: {  //设置grid区域中的分隔线
+                    show: true,  //设置grid区域中的分隔线是否显示
+                    lineStyle: {
+                        color: '#666',
+                        width: 1,
+                        type: 'dashed',  //设置类型
+                    },
+                },
+                splitArea: {  //设置格区域
+                    show: false,  //设置格区域是否显示，默认false
+                },
+            },
+            series: [{  //配置系列列表，每个系列通过type控制该系列图表类型
+                name: '销量',  //设置系列名称
+                type: 'bar',  //设置类型
+                legendHoverLink: true,  //设置系列是否启用图例hover时的联动高亮
+                label: {  //设置图形上的文本标签
+                    show: false,
+                    position: 'insideTop',  //设置相对位置
+                    rotate: 0,  //设置旋转角度
+                    color: '#eee',
+                },
+                itemStyle: {  //设置图形的形状
+                    color: 'blue',  //设置柱形的颜色
+                    barBorderRadius: [18, 18, 0, 0],
+                },
+                barWidth: '20',  //设置柱形的宽度
+                barCategoryGap: '20%',  //设置柱形的间距
+                data: [3020, 4800, 3600, 6050, 4320, 6200, 5050, 7200, 4521, 6700, 8000, 5020]
+            }]
+        };
+        //使用刚指定的配置项和数据显示图表
+        myChart.setOption(option); 
+    </script>
+</body>
+
+</html>
