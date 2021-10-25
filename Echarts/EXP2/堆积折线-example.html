@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!--引入ECharts脚本-->
+    <script src="js/echarts.js"></script>
+</head>
+
+<body>
+    <!---为ECharts准备一个具备大小（宽高）的DOM-->
+    <div id="main" style="width: 600px; height: 400px"></div>
+    <script type="text/javascript">
+        //基于准备好的DOM，初始化ECharts图表
+        var myChart = echarts.init(document.getElementById("main"));
+        //指定图表的配置项和数据
+        var option = {
+            title: {  //配置标题组件
+                text: "堆积折线图",  //设置主标题
+                textStyle: {  //设置主标题文字样式
+                    color: 'green',
+                },
+                left: 20,  //设置适当调整工具框的left位置
+                top: 3  //设置适当调整工具框的top位置
+            },
+            tooltip: {  //配置提示框组件
+                trigger: 'axis'
+            },
+            legend: {  //配置图例组件
+                data: ['手机', '冰箱', '空调', '电视', '其他'],
+                left: 160,  //设置适当调整工具框的left位置
+                top: 3  //设置适当调整工具框的top位置
+            },
+            toolbox: {  //配置工具箱组件
+                show: true,
+                orient: 'vertical',
+                feature: {
+                    mark: { show: true },
+                    dataView: { show: true, readOnly: false },
+                    magicType: { show: true, type: ['line', 'bar', 'stack', 'tiled'] },
+                    restore: { show: true },
+                    saveAsImage: { show: true }
+                },
+                top: 52,  //设置适当调整工具框的top位置
+                left: 550  //设置适当调整工具框的left位置
+            },
+            calculable: true,
+            xAxis: [  //配置X轴坐标系
+                {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+                }
+            ],
+            yAxis: [  //配置Y轴坐标系
+                {
+                    type: 'value'
+                }
+            ],
+            series: [  //配置数据系列
+                {
+                    name: '手机',
+                    type: 'line',  //设置指定显示为折线
+                    stack: '总量',  //smooth:true,
+                    color: 'rgb(0,0,0)',
+                    itemStyle: {
+                        normal:
+                        {
+                            //areaStyle: { type: 'default', color: 'rgb(174,221,139)' }
+                        }
+                    },
+                    data: [434, 345, 456, 222, 333, 444, 432]
+                },
+                {
+                    name: '冰箱',
+                    type: 'line',  //设置指定显示为折线
+                    stack: '总量',  //设置堆积
+                    color: 'blue',
+                    itemStyle: {
+                        normal: {
+                            //areaStyle: { type: 'default', color: 'rgb(107,194,53)' }
+                        }
+                    },
+                    data: [420, 282, 391, 344, 390, 530, 410]
+                },
+                {
+                    name: '空调',
+                    type: 'line',  //设置指定显示为折线
+                    stack: '总量',  //设置堆积
+                    color: 'red',
+                    itemStyle: {
+                        normal: {
+                            //areaStyle: { type: 'default', color: 'rgb(6,128,67)' }
+                        }
+                    },
+                    data: [350, 332, 331, 334, 390, 320, 340]
+                },
+                {
+                    name: '电视',
+                    type: 'line',  //设置指定显示为折线
+                    stack: '总量',  //设置堆积
+                    color: 'green',
+                    itemStyle: {
+                        normal: {
+                            //areaStyle: { type: 'default', color: 'grey' }
+                        }
+                    },
+                    data: [420, 222, 333, 442, 230, 430, 430]
+                },
+                {
+                    name: '其他',
+                    type: 'line',  //设置指定显示为折线
+                    stack: '总量',  //设置堆积
+                    color: '#FA8072',
+                    itemStyle: {
+                        normal: {
+                            //areaStyle: { type: 'default', color: 'rgb(38,157,128)' }
+                        }
+                    },
+                    data: [330, 442, 432, 555, 456, 666, 877]
+                }
+            ]
+        };
+        //使用刚指定的配置项和数据显示图表
+        myChart.setOption(option); 
+    </script>
+</body>
+
+</html>

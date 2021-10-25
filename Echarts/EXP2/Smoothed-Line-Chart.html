@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<!--引入ECharts脚本-->
+	<script src="js/echarts.js"></script>
+</head>
+
+<body>
+	<!---为ECharts准备一个具备大小（宽高）的DOM-->
+	<div id="main" style="width: 600px; height: 400px"></div>
+	<script type="text/javascript">
+		//基于准备好的DOM，初始化ECharts图表
+		var myChart = echarts.init(document.getElementById("main"));
+		//指定图表的配置项和数据
+		var option = {
+            backgroundColor: '#F0FFF0',
+		    title: {
+		        text: '历年不同级别会员数量变化趋势',
+		        textStyle: {
+		            color: 'red'
+		        },
+		        left: 'center'
+		    },
+		    legend: {
+		        data: ['普通会员', 'VIP会员'],
+		        left: 'right'
+		    },
+		    tooltip: {
+		        trigger: 'axis'
+		    },
+		    xAxis: {
+		        type: 'category',
+		        data: ['2016年', '2017年', '2018年']
+		    },
+		    yAxis: {
+		        type: 'value'
+		    },
+		    series: [
+              {
+                  name: '普通会员',
+                  data: [7, 0, 0],
+                  type: 'line',
+                  smooth: true
+              },
+              {
+                  name: 'VIP会员',
+                  data: [0, 3, 4],
+                  type: 'line',
+                  smooth: true
+              }
+		    ]
+		};
+		//使用刚指定的配置项和数据显示图表
+		myChart.setOption(option); 
+	</script>
+</body>
+
+</html>

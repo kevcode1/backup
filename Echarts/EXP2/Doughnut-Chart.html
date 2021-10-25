@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!--引入ECharts脚本-->
+    <script src="js/echarts.js"></script>
+</head>
+
+<body>
+    <!---为ECharts准备一个具备大小（宽高）的DOM-->
+    <div id="main" style="width: 600px; height: 400px"></div>
+    <script type="text/javascript">
+        //基于准备好的DOM，初始化ECharts图表
+        var myChart = echarts.init(document.getElementById("main"));
+        //指定图表的配置项和数据
+        var option = {
+  title: {  
+    //配置标题组件
+    text: '会员入会渠道情况',  //设置主标题
+    left: 'center',  //设置主次标题都左右居中
+    textStyle: {
+      color: 'red'
+    }
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    //配置图例组件
+    orient: 'vertical',  //设置垂直排列
+    data: ['自愿', '微信推广', '团购促销', '节日活动'],
+    left: '5%'
+  },
+  backgroundColor: 'rgba(169,169,169,0.3)',
+  series: [
+    {
+      name: '渠道',
+      type: 'pie',
+      radius: ['40%', '65%'],
+      avoidLabelOverlap: false,
+      label: {
+        fontSize: '20'
+      },
+      itemStyle: {
+        borderRadius: '10'
+      },
+      emphasis: {
+        label: {
+          show: true,
+          fontSize: '30',
+          fontWeight: 'bold'
+        }
+      },
+      data: [
+        { value: 5, name: '自愿' },
+        { value: 2, name: '微信推广' },
+        { value: 3, name: '团购促销' },
+        { value: 4, name: '节日活动' }
+      ]
+    }
+  ]
+};
+        //使用刚指定的配置项和数据显示图表
+        myChart.setOption(option); 
+    </script>
+</body>
+
+</html>

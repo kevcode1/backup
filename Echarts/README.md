@@ -1,1 +1,1 @@
-simple data-visualization examples base on *[Apache ECharts](https://echarts.apache.org/zh/index.html)*
+simple data-visualization examples based on *[Apache ECharts](https://echarts.apache.org/zh/index.html)*
