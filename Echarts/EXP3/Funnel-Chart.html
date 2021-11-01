@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!--引入ECharts脚本-->
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.js"></script>
+</head>
+
+<body>
+    <!---为ECharts准备一个具备大小（宽高）的DOM-->
+    <div id="main" style="width: 800px; height: 600px"></div>
+    <script type="text/javascript">
+        //基于准备好的DOM，初始化ECharts图表
+        var myChart = echarts.init(document.getElementById("main"));
+        //指定图表的配置项和数据
+        var option = {
+  title: {
+    text: '客户签约率转化情况',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'item',
+    //formatter: '{a} <br/>{b} : {c}%'
+  },
+  toolbox: {
+    feature: {
+      dataView: { readOnly: false },
+      restore: {},
+      saveAsImage: {}
+    }
+  },
+  legend: {
+    data: ['市场调查', '潜在客户', '客户跟踪', '客户邀约', '客户谈判', '签订合同'],
+    top: 'bottom'
+  },
+  series: [
+    {
+      name: '步骤',
+      type: 'funnel',
+      left: '10%',
+      top: 60,
+      bottom: 60,
+      width: '80%',
+      min: 0,
+      max: 25000,
+      minSize: '0%',
+      maxSize: '100%',
+      sort: 'descending',
+      gap: 2,
+      label: {
+        show: true,
+        position: 'inside'
+      },
+      labelLine: {
+        length: 10,
+        lineStyle: {
+          width: 1,
+          type: 'solid'
+        }
+      },
+      itemStyle: {
+        borderColor: '#fff',
+        borderWidth: 1,
+        opacity: 0.9
+      },
+      emphasis: {
+        label: {
+          fontSize: 20
+        }
+      },
+      data: [
+        {  value:25000, name: '市场调查'  },
+        {  value:22075, name: '潜在客户'  },
+        {  value:18074, name: '客户跟踪'  },
+        {  value:15063, name: '客户邀约'  },
+        {  value:12005, name: '客户谈判'  },
+        {  value:10634, name: '签订合同'  }
+      ]
+    }
+  ]
+};
+        //使用刚指定的配置项和数据显示图表
+        myChart.setOption(option); 
+    </script>
+</body>
+
+</html>

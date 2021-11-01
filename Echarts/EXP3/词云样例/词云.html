@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>词云图案例</title>
+	<script type="text/javascript" src='js/echarts.js'></script>
+	<script type="text/javascript" src='js/echarts-wordcloud.min.js'></script>
+</head>
+
+<body>
+	<div id="main" style="width:70%;height: 600px;border: 1px solid black"></div>
+	<script type="text/javascript">
+		//基于准备好的dom，初始化ECharts图表
+		var myChart = echarts.init(document.getElementById("main"));
+
+		
+		var option = {  //指定图表的配置项和数据
+			backgroundColor: 'rgba(128, 128, 128, 0.1)',  //rgba设置透明度0.1
+			title: {  //配置标题组件
+				text: '我国主要城市人口分布',
+				x: 'center', y: 15,
+				textStyle: {
+					color: 'green', fontSize: 22,
+				}
+			},
+			tooltip: {
+				show: true,
+				formatter: '{a}<br>{b}: {c} (万人)'
+			},  //配置提示框组件
+			series: [{  //数据系列及其配置
+				name: '我国主要城市人口分布',  //设置名称
+				type: 'wordCloud',  //设置图表类型为字云图
+				sizeRange: [15, 100],  //设置数据大小范围
+				size: ['80%', '80%'],  //设置显示的字云图的大小
+				textRotation: [0, 45, 90, 135, -45, -90],  //设置文字倾斜角度
+				textPadding: 3,  //设置文字之间的间距
+				autoSize: { enable: true, minSize: 15 },  //设置文字的自动大小
+				textStyle: {
+					normal: {
+						color: function () {
+							return 'rgb(' + [
+								Math.round(Math.random() * 255),
+								Math.round(Math.random() * 255),
+								Math.round(Math.random() * 255)
+							].join(',') + ')';
+						}
+					},
+					//emphasis: {
+						//shadowBlur: 26,
+						//color: '#333',
+						//shadowColor: '#ccc',
+						//fontSize: 20
+					//}
+				},
+				data: [  //设置具体的数据
+				{  name: '重庆市', value: 3017.42  },
+				{  name: '上海市', value: 2301.91  },
+				{  name: '北京市', value: 2300.24  },
+				{  name: '成都市', value: 1404.76  },
+				{  name: '天津市', value: 1293.82  },
+				{  name: '广州市', value: 1270.08  },
+				{  name: '保定市', value: 1119.44  },
+				{  name: '哈尔滨市', value: 1063.6  },
+				{  name: '苏州市', value: 1046.6  },
+				{  name: '深圳市', value: 1035.79  },
+				{  name: '南阳市', value: 1026.3  },
+				{  name: '石家庄市', value: 1016.38  },
+				{  name: '郑州市', value: 1013.6  },
+				{  name: '临沂市', value: 1003.94  },
+				{  name: '西安市', value: 1000.3  },
+				{  name: '邯郸市', value: 917.47  },
+				{  name: '温州市', value: 912.21  },
+				{  name: '武汉市', value: 910  },
+				{  name: '潍坊市', value: 908.62  },
+				{  name: '周口市', value: 895.32  },
+				{  name: '青岛市', value: 871.51  },
+				{  name: '杭州市', value: 870.04  },
+				{  name: '徐州市', value: 858.05  },
+				{  name: '赣州市', value: 836.84  },
+				{  name: '菏泽市', value: 828.78  },
+				{  name: '东莞市', value: 822.02  },
+				{  name: '泉州市', value: 812.85  },
+				{  name: '沈阳市', value: 810.62  },
+				{  name: '济宁市', value: 808.19  },
+				{  name: '南京市', value: 800.47  },
+				{  name: '长春市', value: 767.71  },
+				{  name: '宁波市', value: 760.57  },
+				{  name: '阜阳市', value: 760  },
+				{  name: '唐山市', value: 757.73  },
+				{  name: '商丘市', value: 736.25  },
+				{  name: '南通市', value: 728.28  },
+				{  name: '盐城市', value: 726.02  },
+				{  name: '驻马店市', value: 723.07  },
+				{  name: '佛山市', value: 719.43  },
+				{  name: '衡阳市', value: 714.15  },
+				{  name: '沧州市', value: 713.41  },
+				{  name: '福州市', value: 711.54  },
+				{  name: '邢台市', value: 710.41  },
+				{  name: '邵阳市', value: 707.18  },
+				{  name: '长沙市', value: 704.41  },
+				{  name: '中国香港', value: 702.42  },
+				{  name: '湛江市', value: 699.33  },
+				{  name: '烟台市', value: 696.82  },
+				{  name: '济南市', value: 681.4  },
+				{  name: '大连市', value: 669.04  },
+				{  name: '南宁市', value: 666.16  },
+				{  name: '上饶市', value: 657.97  },
+				{  name: '洛阳市', value: 654.95  },
+				{  name: '毕节市', value: 653.64  },
+				{  name: '昆明市', value: 643.2  },
+				{  name: '无锡市', value: 637.26  },
+				{  name: '南充市', value: 627.86  },
+				{  name: '黄冈市', value: 616.21  },
+				{  name: '遵义市', value: 612.7  },
+				{  name: '信阳市', value: 610.87  },
+				{  name: '台州市', value: 596.88  },
+				{  name: '揭阳市', value: 587.7  },
+				{  name: '曲靖市', value: 585.5  },
+				{  name: '茂名市', value: 581.78  },
+				{  name: '聊城市', value: 578.99  },
+				{  name: '常德市', value: 571.72  },
+				{  name: '新乡市', value: 570.78  },
+				{  name: '合肥市', value: 570.2  },
+				{  name: '荆州市', value: 569.17  },
+				{  name: '六安市', value: 561.2  },
+				{  name: '德州市', value: 556.82  },
+				{  name: '襄阳市', value: 550.03  },
+				{  name: '泰安市', value: 549.42  },
+				{  name: '玉林市', value: 548.74  },
+				{  name: '岳阳市', value: 547.79  },
+				{  name: '达州市', value: 546.81  },
+				{  name: '宜春市', value: 541.96  },
+				{  name: '绥化市', value: 541.64  },
+				{  name: '汕头市', value: 539.1  },
+				{  name: '齐齐哈尔市', value: 536.7  },
+				{  name: '金华市', value: 536.16  },
+				{  name: '宿州市', value: 535.3  },
+				{  name: '安庆市', value: 531.1  },
+				{  name: '渭南市', value: 528.61  },
+				{  name: '昭通市', value: 521.3  },
+				{  name: '永州市', value: 518.02  },
+				{  name: '安阳市', value: 517.28  },
+				{  name: '运城市', value: 513.48  },
+				{  name: '南昌市', value: 504.26  },
+				{  name: '绍兴市', value: 491.22  },
+				{  name: '平顶山市', value: 490.44  },
+				{  name: '咸阳市', value: 489.48  },
+				{  name: '亳州市', value: 485.1  },
+				{  name: '孝感市', value: 481.45  },
+				{  name: '吉安市', value: 481.03  },
+				{  name: '漳州市', value: 481  },
+				{  name: '淮安市', value: 479.99  },
+				{  name: '桂林市', value: 474.8  },
+				{  name: '怀化市', value: 474.19  },
+				{  name: '九江市', value: 472.88  },
+				{  name: '宿迁市', value: 471.56  },
+				
+			],//data结束
+			
+		}],  //series结束
+	};  //option结束
+	myChart.setOption(option);  //为echarts对象加载数据 
+	</script>
+</body>
+
+</html>

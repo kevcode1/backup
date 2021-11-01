@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!--引入ECharts脚本-->
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.js"></script>
+</head>
+
+<body>
+    <!---为ECharts准备一个具备大小（宽高）的DOM-->
+    <div id="main" style="width: 800px; height: 600px"></div>
+    <script type="text/javascript">
+        //基于准备好的DOM，初始化ECharts图表
+        var myChart = echarts.init(document.getElementById("main"));
+        //指定图表的配置项和数据
+        var option = {
+  title: {
+    text: '温度与降水、温度与蒸发量关系',
+    left: 'center'
+  },
+  legend: 
+  {
+    data: ['温度-蒸发量', '温度-降水量'],
+    top: 'bottom'
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  xAxis: {
+    type: 'value'
+  },
+  yAxis: {
+    type: 'value'
+  },
+  series: [
+    {
+      name: '温度-蒸发量',
+      symbolSize: 20,
+      data: [
+        [2, 2],
+        [2.2, 4.9],
+        [3.3, 7],
+        [4.5, 23.2],
+        [6.3, 25.6],
+        [10.2, 76.7],
+        [20.3, 135.6],
+        [23.4, 162.2],
+        [23, 32.6],
+        [16.5, 20],
+        [12, 6.4],
+        [6.2, 3.3]
+      ],
+      type: 'scatter',
+      emphasis: {
+        focus: 'series'
+      }
+    },
+    {
+      name: '温度-降水量',
+      symbolSize: 20,
+      data: [
+        [2, 2.6],
+        [2.2, 5.9],
+        [3.3, 9],
+        [4.5, 26.4],
+        [6.3, 28.7],
+        [10.2, 70.7],
+        [20.3, 175.6],
+        [23.4, 182.2],
+        [23, 48.7],
+        [16.5, 18.8],
+        [12, 6],
+        [6.2, 2.3]
+      ],
+      type: 'scatter',
+      emphasis: {
+        focus: 'series'
+      }
+    }
+  ]
+};
+        //使用刚指定的配置项和数据显示图表
+        myChart.setOption(option); 
+    </script>
+</body>
+
+</html>

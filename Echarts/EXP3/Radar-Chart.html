@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!--引入ECharts脚本-->
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.js"></script>
+</head>
+
+<body>
+    <!---为ECharts准备一个具备大小（宽高）的DOM-->
+    <div id="main" style="width: 800px; height: 600px"></div>
+    <script type="text/javascript">
+        //基于准备好的DOM，初始化ECharts图表
+        var myChart = echarts.init(document.getElementById("main"));
+        //指定图表的配置项和数据
+        var option = {
+  title: {
+    text: '销售经理业务能力',
+    left: 'center'
+  },
+  legend: {
+    data: ['王斌', '刘倩', '袁波'],
+    top: 'bottom'
+  },
+  radar: {
+    //shape: 'circle',
+    indicator: [
+      {  name: '销售', max: 100  },
+      {  name: '沟通', max: 100  },
+      {  name: '服务', max: 100  },
+      {  name: '协作', max: 100  },
+      {  name: '培训', max: 100  },
+    ]
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  series: [
+    {
+      name: '销售经理业务能力',
+      type: 'radar',
+      emphasis: {
+        focus: 'item'
+      },
+      areaStyle: {
+        opacity: 0.1
+      },
+      data: [
+        {
+          value: [87.50, 87.50, 90.00, 91.25, 85.00],
+          name: '王斌'
+        },
+        {
+          value: [90.00, 88.75, 85.00, 87.50, 88.75],
+          name: '刘倩'
+        },
+        {
+          value: [92.50, 91.25, 88.75, 92.50, 91.25],
+          name: '袁波'
+        }
+      ]
+    }
+  ]
+};
+        //使用刚指定的配置项和数据显示图表
+        myChart.setOption(option); 
+    </script>
+</body>
+
+</html>
